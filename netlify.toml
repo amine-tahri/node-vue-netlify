@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+# Redirige les appels /api/* vers la fonction serverless
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+
+# SPA fallback pour Vue Router (History mode)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
